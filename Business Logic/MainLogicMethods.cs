@@ -9,7 +9,6 @@ namespace BusinessLogic;
 
 public class MainLogicMethods : IMainLogicMethods
 {
-    #region GetLogic
     
     DataProcedures dataProcedures;
     
@@ -17,7 +16,9 @@ public class MainLogicMethods : IMainLogicMethods
     {
         dataProcedures = new DataProcedures();
     }
-    
+
+    #region GetLogic
+
     /// <summary>
     /// Sends url to fetch data.
     /// </summary>
@@ -38,4 +39,18 @@ public class MainLogicMethods : IMainLogicMethods
         return dataProcedures.SendDataToFront();
     }
     #endregion
+
+    public void PostRequest(string url, string jsonBody)
+    {
+        dataProcedures.PostData(url, jsonBody);
+    }
+
+    public void PutRequest(string url, string jsonBody) 
+    { 
+        dataProcedures.PutData(url, jsonBody);
+    }
+    public void DeleteRequest(string url)
+    {
+        dataProcedures.DeleteData(url);
+    }
 }
