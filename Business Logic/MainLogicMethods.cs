@@ -17,40 +17,8 @@ public class MainLogicMethods : IMainLogicMethods
         dataProcedures = new DataProcedures();
     }
 
-    #region GetLogic
-
-    /// <summary>
-    /// Sends url to fetch data.
-    /// </summary>
-    /// <param name="url"></param>
-    /// <returns>url</returns>
-    public void GetRequest(string url)
-    {
-        dataProcedures.FetchData(url);
-    }
-    
-    /// <summary>
-    /// Returns data to front 
-    /// </summary>
-    /// <param name="json"></param>
-    /// <returns></returns>
-    public string GetResponse()
-    {
-        return dataProcedures.SendDataToFront();
-    }
-    #endregion
-
-    public void PostRequest(string url, string jsonBody)
-    {
-        dataProcedures.PostData(url, jsonBody);
-    }
-
-    public void PutRequest(string url, string jsonBody) 
+    public string GenericRequest(string url, string? dataToSend, HttpMethod httpMethod) 
     { 
-        dataProcedures.PutData(url, jsonBody);
-    }
-    public void DeleteRequest(string url)
-    {
-        dataProcedures.DeleteData(url);
+        return dataProcedures.CrudOperation(url, dataToSend, httpMethod);
     }
 }
