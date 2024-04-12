@@ -32,7 +32,7 @@
             urlLabel = new Label();
             Get_Btn = new Button();
             Post_Btn = new Button();
-            output = new TextBox();
+            data = new TextBox();
             Put_Btn = new Button();
             Delete_Btn = new Button();
             ClearUrl = new Button();
@@ -84,12 +84,12 @@
             // 
             // output
             // 
-            output.Location = new Point(12, 78);
-            output.Multiline = true;
-            output.Name = "output";
-            output.ScrollBars = ScrollBars.Vertical;
-            output.Size = new Size(776, 280);
-            output.TabIndex = 5;
+            data.Location = new Point(12, 78);
+            data.Multiline = true;
+            data.Name = "output";
+            data.ScrollBars = ScrollBars.Vertical;
+            data.Size = new Size(776, 280);
+            data.TabIndex = 5;
             // 
             // Put_Btn
             // 
@@ -148,7 +148,7 @@
             Controls.Add(ClearUrl);
             Controls.Add(Delete_Btn);
             Controls.Add(Put_Btn);
-            Controls.Add(output);
+            Controls.Add(data);
             Controls.Add(Post_Btn);
             Controls.Add(Get_Btn);
             Controls.Add(urlLabel);
@@ -164,7 +164,7 @@
         private Label urlLabel;
         private Button Get_Btn;
         private Button Post_Btn;
-        private TextBox output;
+        private TextBox data;
         private Button Put_Btn;
         private Button Delete_Btn;
         private Button ClearUrl;
