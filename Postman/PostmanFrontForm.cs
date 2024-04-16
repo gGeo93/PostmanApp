@@ -14,14 +14,14 @@ namespace Postman
         }
         private string BeautifiedJson(string jsonString)
         {
-            try 
+            try
             {
                 JToken parsedJson = JToken.Parse(jsonString);
                 var beautifiedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
                 return beautifiedJson;
             }
-            catch 
-            { 
+            catch
+            {
                 return jsonString;
             }
         }
@@ -43,6 +43,10 @@ namespace Postman
         {
             data.Text = mainLogic.GenericRequest(url.Text, null, HttpMethod.Delete);
         }
+        private void Patch_Btn_Click(object sender, EventArgs e)
+        {
+            data.Text = mainLogic.GenericRequest(url.Text, data.Text, HttpMethod.Patch);
+        }
 
         private void ClearUrl_Click(object sender, EventArgs e)
         {
@@ -53,5 +57,6 @@ namespace Postman
         {
             data.Text = string.Empty;
         }
+
     }
 }

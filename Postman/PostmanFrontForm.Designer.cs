@@ -37,6 +37,7 @@
             Delete_Btn = new Button();
             ClearUrl = new Button();
             ClearBody = new Button();
+            Patch_Btn = new Button();
             SuspendLayout();
             // 
             // url
@@ -82,11 +83,11 @@
             Post_Btn.UseVisualStyleBackColor = false;
             Post_Btn.Click += Post_Btn_Click;
             // 
-            // output
+            // data
             // 
             data.Location = new Point(12, 78);
             data.Multiline = true;
-            data.Name = "output";
+            data.Name = "data";
             data.ScrollBars = ScrollBars.Vertical;
             data.Size = new Size(776, 280);
             data.TabIndex = 5;
@@ -109,7 +110,7 @@
             Delete_Btn.BackColor = Color.Red;
             Delete_Btn.FlatAppearance.BorderColor = Color.Black;
             Delete_Btn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            Delete_Btn.Location = new Point(588, 35);
+            Delete_Btn.Location = new Point(669, 35);
             Delete_Btn.Name = "Delete_Btn";
             Delete_Btn.Size = new Size(75, 27);
             Delete_Btn.TabIndex = 7;
@@ -139,11 +140,25 @@
             ClearBody.UseVisualStyleBackColor = true;
             ClearBody.Click += ClearBody_Click;
             // 
+            // Patch_Btn
+            // 
+            Patch_Btn.BackColor = Color.Cyan;
+            Patch_Btn.FlatAppearance.BorderColor = Color.Black;
+            Patch_Btn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Patch_Btn.Location = new Point(588, 35);
+            Patch_Btn.Name = "Patch_Btn";
+            Patch_Btn.Size = new Size(75, 27);
+            Patch_Btn.TabIndex = 10;
+            Patch_Btn.Text = "PATCH";
+            Patch_Btn.UseVisualStyleBackColor = false;
+            Patch_Btn.Click += Patch_Btn_Click;
+            // 
             // PostmanFrontForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(Patch_Btn);
             Controls.Add(ClearBody);
             Controls.Add(ClearUrl);
             Controls.Add(Delete_Btn);
@@ -169,5 +184,6 @@
         private Button Delete_Btn;
         private Button ClearUrl;
         private Button ClearBody;
+        private Button Patch_Btn;
     }
 }

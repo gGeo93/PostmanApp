@@ -10,19 +10,21 @@ namespace DataAccess
       
         public string CrudOperation(string url, string? dataToSend, HttpMethod httpMethod)
         {
-            try 
-            { 
-                using (var client = new HttpClient()) 
+            try
+            {
+                HttpResponseMessage response;
+                using (var client = new HttpClient())
                 {
+                    JsonData = string.Empty;
                     var request = new HttpRequestMessage(httpMethod, url);
                     if (!string.IsNullOrEmpty(dataToSend))
                         request.Content = new StringContent(dataToSend, Encoding.UTF8, "application/json");
-                    var response = client.Send(request);
+                    response = client.Send(request);
                     JsonData = response.Content.ReadAsStringAsync().Result;
                 }
-                return string.IsNullOrEmpty(JsonData) ? "Operation Completed Succesfully!" : JsonData;
+                return response.IsSuccessStatusCode ? JsonData : response.ReasonPhrase!; 
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 ErrorMessage = ex.Message;
                 return ErrorMessage;
