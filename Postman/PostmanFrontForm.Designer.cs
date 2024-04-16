@@ -68,7 +68,7 @@
             Get_Btn.TabIndex = 3;
             Get_Btn.Text = "GET";
             Get_Btn.UseVisualStyleBackColor = false;
-            Get_Btn.Click += Get_Btn_Click;
+            Get_Btn.Click += Request;
             // 
             // Post_Btn
             // 
@@ -81,7 +81,7 @@
             Post_Btn.TabIndex = 4;
             Post_Btn.Text = "POST";
             Post_Btn.UseVisualStyleBackColor = false;
-            Post_Btn.Click += Post_Btn_Click;
+            Post_Btn.Click += Request;
             // 
             // data
             // 
@@ -103,7 +103,7 @@
             Put_Btn.TabIndex = 6;
             Put_Btn.Text = "PUT";
             Put_Btn.UseVisualStyleBackColor = false;
-            Put_Btn.Click += Put_Btn_Click;
+            Put_Btn.Click += Request;
             // 
             // Delete_Btn
             // 
@@ -116,7 +116,7 @@
             Delete_Btn.TabIndex = 7;
             Delete_Btn.Text = "DELETE";
             Delete_Btn.UseVisualStyleBackColor = false;
-            Delete_Btn.Click += Delete_Btn_Click;
+            Delete_Btn.Click += Request;
             // 
             // ClearUrl
             // 
@@ -151,7 +151,7 @@
             Patch_Btn.TabIndex = 10;
             Patch_Btn.Text = "PATCH";
             Patch_Btn.UseVisualStyleBackColor = false;
-            Patch_Btn.Click += Patch_Btn_Click;
+            Patch_Btn.Click += Request;
             // 
             // PostmanFrontForm
             // 

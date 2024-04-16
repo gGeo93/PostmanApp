@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using Newtonsoft.Json.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Postman
 {
@@ -10,8 +11,8 @@ namespace Postman
         {
             InitializeComponent();
             mainLogic = new MainLogicMethods();
-            url.Text = "https://";
         }
+        
         private string BeautifiedJson(string jsonString)
         {
             try
@@ -26,26 +27,9 @@ namespace Postman
             }
         }
 
-        private void Get_Btn_Click(object sender, EventArgs e)
+        private void Request(object sender, EventArgs e)
         {
-            string jsonString = mainLogic.GenericRequest(url.Text, null, HttpMethod.Get);
-            data.Text = BeautifiedJson(jsonString);
-        }
-        private void Post_Btn_Click(object sender, EventArgs e)
-        {
-            data.Text = mainLogic.GenericRequest(url.Text, data.Text, HttpMethod.Post);
-        }
-        private void Put_Btn_Click(object sender, EventArgs e)
-        {
-            data.Text = mainLogic.GenericRequest(url.Text, data.Text, HttpMethod.Put);
-        }
-        private void Delete_Btn_Click(object sender, EventArgs e)
-        {
-            data.Text = mainLogic.GenericRequest(url.Text, null, HttpMethod.Delete);
-        }
-        private void Patch_Btn_Click(object sender, EventArgs e)
-        {
-            data.Text = mainLogic.GenericRequest(url.Text, data.Text, HttpMethod.Patch);
+            data.Text = BeautifiedJson(mainLogic.GenericRequest(url.Text, data.Text, ((Button)sender).Text));
         }
 
         private void ClearUrl_Click(object sender, EventArgs e)

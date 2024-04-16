@@ -2,5 +2,5 @@
 
 public interface IMainLogicMethods
 {
-    string GenericRequest(string url, string? dataToSend, HttpMethod httpMethod);
+    string GenericRequest(string url, string? dataToSend, string httpMethod);
 }
