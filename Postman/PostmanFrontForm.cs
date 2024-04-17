@@ -12,7 +12,12 @@ namespace Postman
             InitializeComponent();
             mainLogic = new MainLogicMethods();
         }
-        
+
+
+        private void Request(object sender, EventArgs e)
+        {
+            body.Text = BeautifiedJson(mainLogic.GenericRequest(url.Text, body.Text, ((Button)sender).Text));
+        }
         private string BeautifiedJson(string jsonString)
         {
             try
@@ -27,20 +32,9 @@ namespace Postman
             }
         }
 
-        private void Request(object sender, EventArgs e)
+        private void Clear_Btns(object sender, EventArgs e)
         {
-            data.Text = BeautifiedJson(mainLogic.GenericRequest(url.Text, data.Text, ((Button)sender).Text));
+            _ = ((Button)sender).Text.Contains("Url") ? url.Text = "" : body.Text = "";
         }
-
-        private void ClearUrl_Click(object sender, EventArgs e)
-        {
-            url.Text = string.Empty;
-        }
-
-        private void ClearBody_Click(object sender, EventArgs e)
-        {
-            data.Text = string.Empty;
-        }
-
     }
 }

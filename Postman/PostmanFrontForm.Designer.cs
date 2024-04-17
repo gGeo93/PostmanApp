@@ -32,12 +32,13 @@
             urlLabel = new Label();
             Get_Btn = new Button();
             Post_Btn = new Button();
-            data = new TextBox();
+            body = new TextBox();
             Put_Btn = new Button();
             Delete_Btn = new Button();
             ClearUrl = new Button();
             ClearBody = new Button();
             Patch_Btn = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // url
@@ -62,7 +63,7 @@
             Get_Btn.BackColor = SystemColors.ActiveCaption;
             Get_Btn.FlatAppearance.BorderColor = Color.Black;
             Get_Btn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            Get_Btn.Location = new Point(345, 35);
+            Get_Btn.Location = new Point(336, 31);
             Get_Btn.Name = "Get_Btn";
             Get_Btn.Size = new Size(75, 27);
             Get_Btn.TabIndex = 3;
@@ -75,7 +76,7 @@
             Post_Btn.BackColor = Color.LightGreen;
             Post_Btn.FlatAppearance.BorderColor = Color.Black;
             Post_Btn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            Post_Btn.Location = new Point(426, 35);
+            Post_Btn.Location = new Point(417, 31);
             Post_Btn.Name = "Post_Btn";
             Post_Btn.Size = new Size(75, 27);
             Post_Btn.TabIndex = 4;
@@ -83,21 +84,21 @@
             Post_Btn.UseVisualStyleBackColor = false;
             Post_Btn.Click += Request;
             // 
-            // data
+            // body
             // 
-            data.Location = new Point(12, 78);
-            data.Multiline = true;
-            data.Name = "data";
-            data.ScrollBars = ScrollBars.Vertical;
-            data.Size = new Size(776, 280);
-            data.TabIndex = 5;
+            body.Location = new Point(12, 87);
+            body.Multiline = true;
+            body.Name = "body";
+            body.ScrollBars = ScrollBars.Vertical;
+            body.Size = new Size(776, 277);
+            body.TabIndex = 5;
             // 
             // Put_Btn
             // 
             Put_Btn.BackColor = Color.Gold;
             Put_Btn.FlatAppearance.BorderColor = Color.Black;
             Put_Btn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            Put_Btn.Location = new Point(507, 35);
+            Put_Btn.Location = new Point(498, 31);
             Put_Btn.Name = "Put_Btn";
             Put_Btn.Size = new Size(75, 27);
             Put_Btn.TabIndex = 6;
@@ -110,7 +111,7 @@
             Delete_Btn.BackColor = Color.Red;
             Delete_Btn.FlatAppearance.BorderColor = Color.Black;
             Delete_Btn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            Delete_Btn.Location = new Point(669, 35);
+            Delete_Btn.Location = new Point(660, 31);
             Delete_Btn.Name = "Delete_Btn";
             Delete_Btn.Size = new Size(75, 27);
             Delete_Btn.TabIndex = 7;
@@ -127,7 +128,7 @@
             ClearUrl.TabIndex = 8;
             ClearUrl.Text = "Clear Url";
             ClearUrl.UseVisualStyleBackColor = true;
-            ClearUrl.Click += ClearUrl_Click;
+            ClearUrl.Click += Clear_Btns;
             // 
             // ClearBody
             // 
@@ -138,14 +139,14 @@
             ClearBody.TabIndex = 9;
             ClearBody.Text = "Clear Body";
             ClearBody.UseVisualStyleBackColor = true;
-            ClearBody.Click += ClearBody_Click;
+            ClearBody.Click += Clear_Btns;
             // 
             // Patch_Btn
             // 
             Patch_Btn.BackColor = Color.Cyan;
             Patch_Btn.FlatAppearance.BorderColor = Color.Black;
             Patch_Btn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            Patch_Btn.Location = new Point(588, 35);
+            Patch_Btn.Location = new Point(579, 31);
             Patch_Btn.Name = "Patch_Btn";
             Patch_Btn.Size = new Size(75, 27);
             Patch_Btn.TabIndex = 10;
@@ -153,17 +154,28 @@
             Patch_Btn.UseVisualStyleBackColor = false;
             Patch_Btn.Click += Request;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label1.Location = new Point(367, 65);
+            label1.Name = "label1";
+            label1.Size = new Size(44, 19);
+            label1.TabIndex = 11;
+            label1.Text = "Body";
+            // 
             // PostmanFrontForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(Patch_Btn);
             Controls.Add(ClearBody);
             Controls.Add(ClearUrl);
             Controls.Add(Delete_Btn);
             Controls.Add(Put_Btn);
-            Controls.Add(data);
+            Controls.Add(body);
             Controls.Add(Post_Btn);
             Controls.Add(Get_Btn);
             Controls.Add(urlLabel);
@@ -179,11 +191,12 @@
         private Label urlLabel;
         private Button Get_Btn;
         private Button Post_Btn;
-        private TextBox data;
+        private TextBox body;
         private Button Put_Btn;
         private Button Delete_Btn;
         private Button ClearUrl;
         private Button ClearBody;
         private Button Patch_Btn;
+        private Label label1;
     }
 }
