@@ -1,0 +1,37 @@
+﻿@page "/postman"
+@inject IMainLogicMethods mainLogic
+
+<PageTitle>Postman Api Call</PageTitle>
+
+<h3>Postman</h3>
+<br />
+<form>
+    <div class="form-group">
+        <label for="url">URL</label>
+        <input class="form-control" type="text" id="url" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="methodRequest">Method Request</label>
+            <select class="form-control" id="methodRequest">
+                <option>GET</option>
+                <option>POST</option>
+                <option>PUT</option>
+                <option>PATCH</option>
+                <option>DELETE</option>
+            </select>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="body">Main Body</label>
+        <textarea class ="form-control" id="body" rows = "10"></textarea>
+    </div>
+    <br />
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+</form>
+
+@code {
+   private IMainLogicMethods methods; 
+}
