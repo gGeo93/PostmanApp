@@ -6,14 +6,14 @@ namespace DataAccess
     {
         private string JsonData { get; set; } = string.Empty;        
       
-        public string CrudOperation(string url, string? dataToSend, HttpMethod httpMethod)
+        public async Task<string> CrudOperation(string url, string? dataToSend, HttpMethod httpMethod)
         {
             try
             {
                 HttpResponseMessage response;
                 using (var client = new HttpClient())
                 {
-                    response = HttpClientCall(url, dataToSend, httpMethod, client);
+                    response = await HttpClientCall(url, dataToSend, httpMethod, client);
                 }
                 return response.IsSuccessStatusCode ? JsonData : response.ReasonPhrase!; 
             }
@@ -23,7 +23,7 @@ namespace DataAccess
             }
         }
 
-        private HttpResponseMessage HttpClientCall(string url, string? dataToSend, HttpMethod httpMethod, HttpClient client)
+        private async Task<HttpResponseMessage> HttpClientCall(string url, string? dataToSend, HttpMethod httpMethod, HttpClient client)
         {
             HttpResponseMessage response;
 
@@ -33,8 +33,8 @@ namespace DataAccess
             
             if (!string.IsNullOrEmpty(dataToSend))
                 request.Content = new StringContent(dataToSend, Encoding.UTF8, "application/json");
-           
-            response = client.Send(request);
+
+            response = await client.SendAsync(request);
             
             JsonData = response.Content.ReadAsStringAsync().Result;
             

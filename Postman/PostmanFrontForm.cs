@@ -14,22 +14,9 @@ namespace Postman
         }
 
 
-        private void Request(object sender, EventArgs e)
+        private async void Request(object sender, EventArgs e)
         {
-            body.Text = BeautifiedJson(mainLogic.GenericRequest(url.Text, body.Text, ((Button)sender).Text));
-        }
-        private string BeautifiedJson(string jsonString)
-        {
-            try
-            {
-                JToken parsedJson = JToken.Parse(jsonString);
-                var beautifiedJson = parsedJson.ToString(Newtonsoft.Json.Formatting.Indented);
-                return beautifiedJson;
-            }
-            catch
-            {
-                return jsonString;
-            }
+            body.Text = await mainLogic.GenericRequest(url.Text, body.Text, ((Button)sender).Text);
         }
 
         private void Clear_Btns(object sender, EventArgs e)

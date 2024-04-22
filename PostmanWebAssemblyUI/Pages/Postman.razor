@@ -1,5 +1,7 @@
 ﻿@page "/postman"
 @inject IMainLogicMethods mainLogic
+@inject ILocalStorageService localStorage
+@inject RequestModel model
 
 <PageTitle>Postman Api Call</PageTitle>
 
@@ -8,12 +10,12 @@
 <form>
     <div class="form-group">
         <label for="url">URL</label>
-        <input class="form-control" type="text" id="url" />
+        <input class="form-control" type="text" id="url" @bind-value = "model.Url"/>
     </div>
     <br />
     <div class="form-group">
         <label for="methodRequest">Method Request</label>
-            <select class="form-control" id="methodRequest">
+            <select class="form-control" id="methodRequest" @bind = "model.Method">
                 <option>GET</option>
                 <option>POST</option>
                 <option>PUT</option>
@@ -24,14 +26,31 @@
     <br />
     <div class="form-group">
         <label for="body">Main Body</label>
-        <textarea class ="form-control" id="body" rows = "10"></textarea>
+        <textarea class ="form-control" id="body" rows = "10" @bind = "model.DataToSend"></textarea>
     </div>
     <br />
     <div class="form-group">
-        <button type="submit" class="btn btn-primary" >Submit</button>
+        <button type="submit" class="btn btn-primary" @onclick="(() => RequestSent(model.Url, model.DataToSend, model.Method))">Submit</button>
     </div>
 </form>
 
 @code {
-   private IMainLogicMethods methods; 
+    protected override async Task OnInitializedAsync()
+    {
+        await RetreiveLocally();
+    }
+    private async Task RequestSent(string url, string? dataToSend, string Method)
+    {
+        mainLogic = new MainLogicMethods();
+        model.DataToSend = await mainLogic.GenericRequest(url, dataToSend, Method);
+        await SaveLocally();
+    }
+    private async Task SaveLocally()
+    {
+        await localStorage.SetItemAsync<RequestModel>("model", model);
+    }
+    private async Task RetreiveLocally()
+    {
+        model = await localStorage.GetItemAsync<RequestModel>("model"); 
+    }
 }
