@@ -1,6 +1,4 @@
 ﻿using BusinessLogic;
-using Newtonsoft.Json.Linq;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Postman
 {
