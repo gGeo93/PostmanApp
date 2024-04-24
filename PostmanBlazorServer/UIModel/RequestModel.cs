@@ -1,4 +1,4 @@
-﻿namespace PostmanWebAssemblyUI.UIModel;
+﻿namespace PostmanBlazorServer.UIModel;
 
 public class RequestModel
 {

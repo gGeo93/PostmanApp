@@ -35,8 +35,8 @@ namespace DataAccess
                 request.Content = new StringContent(dataToSend, Encoding.UTF8, "application/json");
 
             response = await client.SendAsync(request);
-            
-            JsonData = response.Content.ReadAsStringAsync().Result;
+
+            JsonData = await response.Content.ReadAsStringAsync();
             
             return response;
         }

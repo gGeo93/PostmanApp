@@ -1,0 +1,59 @@
+﻿@page "/postman"
+@using BusinessLogic;
+@using UIModel;
+@using Blazored.LocalStorage;
+@using System.Text.RegularExpressions;
+@inject IMainLogicMethods mainLogic
+@inject ILocalStorageService localStorage
+@inject RequestModel model
+
+<PageTitle>Postman Api Call</PageTitle>
+
+<h3>Postman</h3>
+<br />
+<EditForm Model="model" method="post" FormName="Postman" OnValidSubmit="RequestSent">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label for="url">URL</label>
+        <InputText class="form-control" type="text" id="url" @bind-Value="model.Url"/>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="methodRequest">Method Request</label>
+        <InputSelect class="form-control" id="methodRequest" @bind-Value="model.Method"> 
+            <option selected value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="PATCH">PATCH</option>
+            <option value="DELETE">DELETE</option>
+        </InputSelect>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="body">Main Body</label>
+        <InputTextArea class="form-control" id="body" rows="10" name="model.DataToSend" @bind-Value="model.DataToSend"/>
+    </div>
+    <br />
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</EditForm>
+
+@code {
+    [SupplyParameterFromForm]
+    RequestModel Model { get; set; } = new();
+
+    private async Task RequestSent()
+    {
+        model.DataToSend = await mainLogic.GenericRequest(Model.Url, Regex.Replace(Model.DataToSend!, @"\s+", ""), Model.Method);
+    }
+    private async Task SaveLocally()
+    {
+        await localStorage.SetItemAsync<RequestModel>("Model", Model);
+    }
+    private async Task RetreiveLocally()
+    {
+        model = await localStorage.GetItemAsync<RequestModel>("Model");
+    }
+}
