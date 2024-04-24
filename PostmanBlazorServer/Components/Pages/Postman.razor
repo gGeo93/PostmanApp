@@ -22,7 +22,7 @@
     <div class="form-group">
         <label for="methodRequest">Method Request</label>
         <InputSelect class="form-control" id="methodRequest" @bind-Value="model.Method"> 
-            <option selected value="GET">GET</option>
+            <option value="GET">GET</option>
             <option value="POST">POST</option>
             <option value="PUT">PUT</option>
             <option value="PATCH">PATCH</option>
@@ -44,16 +44,14 @@
     [SupplyParameterFromForm]
     RequestModel Model { get; set; } = new();
 
+    protected override void OnParametersSet()
+    {
+        model.Url = Model.Url;
+        model.Method = Model.Method;
+    }
+    
     private async Task RequestSent()
     {
-        model.DataToSend = await mainLogic.GenericRequest(Model.Url, Regex.Replace(Model.DataToSend!, @"\s+", ""), Model.Method);
-    }
-    private async Task SaveLocally()
-    {
-        await localStorage.SetItemAsync<RequestModel>("Model", Model);
-    }
-    private async Task RetreiveLocally()
-    {
-        model = await localStorage.GetItemAsync<RequestModel>("Model");
+        model.DataToSend = await mainLogic.GenericRequest(Model.Url, Model.DataToSend, Model.Method);
     }
 }

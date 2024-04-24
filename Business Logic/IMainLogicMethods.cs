@@ -2,5 +2,5 @@
 
 public interface IMainLogicMethods
 {
-    Task<string> GenericRequest(string url, string? dataToSend, string httpMethod);
+    Task<string> GenericRequest(string url, string dataToSend, string httpMethod);
 }
