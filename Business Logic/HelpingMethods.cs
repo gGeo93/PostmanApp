@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 
-namespace Business_Logic;
+namespace BusinessLogic;
 
 public static class HelpingMethods
 {
