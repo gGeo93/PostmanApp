@@ -1,8 +1,5 @@
 ﻿@page "/postman"
-@using BusinessLogic;
-@using UIModel;
-@using Blazored.LocalStorage;
-@using System.Text.RegularExpressions;
+
 @inject IMainLogicMethods mainLogic
 @inject ILocalStorageService localStorage
 @inject RequestModel model
@@ -11,7 +8,7 @@
 
 <h3>Postman</h3>
 <br />
-<EditForm Model="model" method="post" FormName="Postman" OnValidSubmit="RequestSent">
+<EditForm Model="model" FormName="Postman" OnValidSubmit="RequestSent">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <div class="form-group">
