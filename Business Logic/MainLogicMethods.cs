@@ -5,7 +5,7 @@ namespace BusinessLogic;
 public class MainLogicMethods : IMainLogicMethods
 {
     DataProcedures dataProcedures;
-    private readonly string invalidUrlErrorcase = "Invalid Api Url.";
+    private readonly string invalidUrlErrorCase = "Invalid Api Url.";
     public MainLogicMethods()
     {
         dataProcedures = new DataProcedures();
@@ -13,11 +13,11 @@ public class MainLogicMethods : IMainLogicMethods
     public async Task<string> GenericRequest(string url, string dataToSend, string httpMethod) 
     {
         return 
-        url.IsValidApiUrl() 
-        ? HelpingMethods.BeautifiedJson(await dataProcedures.CrudOperation(
-                                            url, 
-                                            dataToSend.WhiteSpacesRemovedFromJson(), 
-                                            httpMethod.RequestMethod()))
-        : invalidUrlErrorcase;
+            url.IsValidApiUrl() 
+            ? HelpingMethods.BeautifiedJson(await dataProcedures.CrudOperation(
+                                                url, 
+                                                dataToSend.WhiteSpacesRemovedFromJson(), 
+                                                httpMethod.RequestMethod()))
+            : invalidUrlErrorCase;
     }
 }

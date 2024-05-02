@@ -1,7 +1,5 @@
 ﻿@page "/postman"
-
 @inject IMainLogicMethods mainLogic
-@inject ILocalStorageService localStorage
 @inject RequestModel model
 
 <PageTitle>Postman Api Call</PageTitle>
@@ -10,7 +8,6 @@
 <br />
 <EditForm Model="model" FormName="Postman" OnValidSubmit="RequestSent">
     <DataAnnotationsValidator />
-    <ValidationSummary />
     <div class="form-group">
         <label for="url">URL</label>
         <InputText class="form-control" type="text" id="url" @bind-Value="model.Url"/>
@@ -29,7 +26,7 @@
     <br />
     <div class="form-group">
         <label for="body">Main Body</label>
-        <InputTextArea class="form-control" id="body" rows="10" name="model.DataToSend" @bind-Value="model.DataToSend"/>
+        <InputTextArea class="form-control" id="body" rows="10" @bind-Value="model.DataToSend"/>
     </div>
     <br />
     <div class="form-group">

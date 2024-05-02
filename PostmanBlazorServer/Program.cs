@@ -1,6 +1,3 @@
-using Blazored.LocalStorage;
-using Blazorise;
-using Blazorise.Icons.FontAwesome;
 using BusinessLogic;
 using PostmanBlazorServer.Components;
 using PostmanBlazorServer.UIModel;
@@ -12,13 +9,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddTransient<IMainLogicMethods, MainLogicMethods>(m => new MainLogicMethods());
 builder.Services.AddTransient<RequestModel>();
-builder.Services.AddBlazoredLocalStorage();
-builder.Services.AddBlazorise(options =>
-{
-    options.IconStyle = IconStyle.Light;
-    options.IconSize = IconSize.Small;
-});
-builder.Services.AddFontAwesomeIcons();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
