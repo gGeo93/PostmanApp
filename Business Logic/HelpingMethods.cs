@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace BusinessLogic;
 
-public static class HelpingMethods
+internal static class HelpingMethods
 {
     public static bool IsValidApiUrl(this string url)
     {

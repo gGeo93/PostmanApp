@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using BusinessLogic;
+﻿using BusinessLogic;
 
 namespace Postman
 {
@@ -15,11 +14,6 @@ namespace Postman
 
         private async void Request(object sender, EventArgs e)
         {
-            if(!url.Text.IsValidApiUrl()) 
-            {
-                body.Text = "Invalid Api Url";
-                return;
-            }
             body.Text = await mainLogic.GenericRequest(url.Text, body.Text, ((Button)sender).Text);
         }
 
