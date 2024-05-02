@@ -15,9 +15,9 @@ namespace Postman
 
         private async void Request(object sender, EventArgs e)
         {
-            if (!url.Text.IsValidUrl()) 
+            if(!url.Text.IsValidApiUrl()) 
             {
-                body.Text = "Invalid Url";
+                body.Text = "Invalid Api Url";
                 return;
             }
             body.Text = await mainLogic.GenericRequest(url.Text, body.Text, ((Button)sender).Text);

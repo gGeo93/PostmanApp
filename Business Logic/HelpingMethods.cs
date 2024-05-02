@@ -5,6 +5,11 @@ namespace BusinessLogic;
 
 public static class HelpingMethods
 {
+    public static bool IsValidApiUrl(this string url)
+    {
+        string pattern = @"^https?://(((\w|\.)+(com|org|gr))|(localhost:\d{4}))((/|(\w+))+((\d+)?))(\?((\w+=\w+((\&\w+=\w+)+)?))?)?";
+        return Regex.IsMatch(url, pattern);
+    }
     public static HttpMethod RequestMethod(this string httpMethod)
     {
         switch (httpMethod)
