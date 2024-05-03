@@ -39,6 +39,7 @@
             ClearBody = new Button();
             Patch_Btn = new Button();
             label1 = new Label();
+            progressBar = new ProgressBar();
             SuspendLayout();
             // 
             // url
@@ -164,11 +165,20 @@
             label1.TabIndex = 11;
             label1.Text = "Body";
             // 
+            // progressBar
+            // 
+            progressBar.Location = new Point(336, 205);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(100, 29);
+            progressBar.TabIndex = 12;
+            progressBar.Visible = false;
+            // 
             // PostmanFrontForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(progressBar);
             Controls.Add(label1);
             Controls.Add(Patch_Btn);
             Controls.Add(ClearBody);
@@ -198,5 +208,6 @@
         private Button ClearBody;
         private Button Patch_Btn;
         private Label label1;
+        private ProgressBar progressBar;
     }
 }
