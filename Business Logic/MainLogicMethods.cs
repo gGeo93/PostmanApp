@@ -14,10 +14,13 @@ public class MainLogicMethods : IMainLogicMethods
     {
         return 
             url.IsValidApiUrl() 
-            ? HelpingMethods.BeautifiedJson(await dataProcedures.CrudOperation(
+            ? HelpingMethods.BeautifiedJson
+            (await dataProcedures.CrudOperation(
                                                 url, 
                                                 dataToSend.WhiteSpacesRemovedFromJson(), 
-                                                httpMethod.RequestMethod()))
+                                                httpMethod.RequestMethod()
+                                                )
+            )
             : invalidUrlErrorCase;
     }
 }

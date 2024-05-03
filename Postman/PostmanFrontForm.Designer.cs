@@ -40,6 +40,7 @@
             Patch_Btn = new Button();
             label1 = new Label();
             progressBar = new ProgressBar();
+            perCent = new Label();
             SuspendLayout();
             // 
             // url
@@ -173,11 +174,23 @@
             progressBar.TabIndex = 12;
             progressBar.Visible = false;
             // 
+            // perCent
+            // 
+            perCent.AutoSize = true;
+            perCent.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            perCent.Location = new Point(367, 237);
+            perCent.Name = "perCent";
+            perCent.Size = new Size(14, 15);
+            perCent.TabIndex = 13;
+            perCent.Text = "0";
+            perCent.Visible = false;
+            // 
             // PostmanFrontForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(perCent);
             Controls.Add(progressBar);
             Controls.Add(label1);
             Controls.Add(Patch_Btn);
@@ -209,5 +222,6 @@
         private Button Patch_Btn;
         private Label label1;
         private ProgressBar progressBar;
+        private Label perCent;
     }
 }
