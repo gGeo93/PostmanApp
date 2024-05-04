@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostmanFrontForm));
             url = new TextBox();
             urlLabel = new Label();
             Get_Btn = new Button();
@@ -189,6 +190,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(perCent);
             Controls.Add(progressBar);
@@ -203,6 +205,7 @@
             Controls.Add(Get_Btn);
             Controls.Add(urlLabel);
             Controls.Add(url);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PostmanFrontForm";
             Text = "PostmanFrontForm";
             ResumeLayout(false);
