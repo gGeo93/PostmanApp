@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostmanBlazorServer", "PostmanBlazorServer\PostmanBlazorServer.csproj", "{B083CE5B-E080-477C-8A06-EFD05EBD0A65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostmanWebAssembly", "PostmanWebAssembly\PostmanWebAssembly.csproj", "{2EA2BC81-2EBC-4D7E-A694-920CB0BB5D7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B083CE5B-E080-477C-8A06-EFD05EBD0A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B083CE5B-E080-477C-8A06-EFD05EBD0A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B083CE5B-E080-477C-8A06-EFD05EBD0A65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA2BC81-2EBC-4D7E-A694-920CB0BB5D7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA2BC81-2EBC-4D7E-A694-920CB0BB5D7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA2BC81-2EBC-4D7E-A694-920CB0BB5D7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA2BC81-2EBC-4D7E-A694-920CB0BB5D7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

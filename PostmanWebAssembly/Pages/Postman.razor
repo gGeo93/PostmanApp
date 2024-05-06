@@ -1,0 +1,76 @@
+﻿@page "/postman"
+
+@inject IMainLogicMethods mainLogic
+@inject RequestModel model
+@inject ILocalStorageService localstorage;
+
+<PageTitle>Postman Api Call</PageTitle>
+
+<h3>Postman</h3>
+<br />
+<EditForm Model="model" FormName="Postman" OnValidSubmit="RequestSent">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label for="url">URL</label>
+        <InputText class="form-control" type="text" id="url" @bind-Value="model.Url" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="methodRequest">Method Request</label>
+        <InputSelect class="form-control" id="methodRequest" @bind-Value="model.Method">
+            <option selected value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="PATCH">PATCH</option>
+            <option value="DELETE">DELETE</option>
+        </InputSelect>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="body">Main Body</label>
+        <InputTextArea class="form-control" id="body" rows="10" @bind-Value="model.DataToSend" />
+    </div>
+    <br />
+    <div class="btn-group">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</EditForm>
+<hr />
+<div class="btn-group">
+    <button class="btn btn-light" style="margin-right:5px;background-color:silver" @onclick = "ClearUrl">Clear Url</button>
+    <button class="btn btn-dark" @onclick = "ClearMainBody">Clear Body</button>
+</div>    
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        if(model != null)
+        {
+            var formFields = await RetrieveFromLocalStorage();
+            model.Url = formFields!.Url;
+            model.Method = formFields.Method;
+        }
+    }
+
+    private async Task RequestSent()
+    {
+        model.DataToSend = await mainLogic.GenericRequest(model.Url, model.DataToSend, model.Method);
+        await SaveToLocalStorage();
+    }
+    private void ClearMainBody()
+    {
+        model.DataToSend = "";
+    }
+    private void ClearUrl()
+    {
+        model.Url = "";
+    }
+    private async Task SaveToLocalStorage()
+    {
+        await localstorage.SetItemAsync<RequestModel>("model",model);
+    }
+    private async Task<RequestModel?> RetrieveFromLocalStorage()
+    {
+        return await localstorage.GetItemAsync<RequestModel>("model");
+    }
+}
