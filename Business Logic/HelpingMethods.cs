@@ -5,6 +5,7 @@ namespace BusinessLogic;
 
 internal static class HelpingMethods
 {
+    private static readonly string errorMessage = "Wrong API call.";
     public static bool IsValidApiUrl(this string url)
     {
         string pattern = @"^https?://(((\w|\.)+(com|org|gr))|(localhost:\d{4}))((/|(\w+))+((\d+)?))(\?((\w+=\w+((\&\w+=\w+)+)?))?)?";
@@ -32,7 +33,7 @@ internal static class HelpingMethods
         }
         catch
         {
-            return jsonString;
+            return errorMessage;
         }
     }
     public static string WhiteSpacesRemovedFromJson(this string jsonString)
